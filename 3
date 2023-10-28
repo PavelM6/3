@@ -1,3 +1,7 @@
 223
 https://www.enterprisedb.com/products/biganimal-cloud-postgresql
 psql "sslmode=disable host=localhost
+
+create table kafedra(id serial NOT NULL, k_name varchar NOT NULL PRIMARY KEY, dekanat varchar NOT NULL); 
+create table student_group(id serial NOT NULL, k_name varchar PRIMARY KEY REFERENCES kafedra(k_name) , nazvanie varchar NOT NULL UNIQUE); 
+create table students(id serial NOT NULL, passport varchar(10) NOT NULL, s_name varchar NOT NULL, grouppa varchar REFERENCES student_group(nazvanie));
