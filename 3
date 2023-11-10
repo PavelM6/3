@@ -1,7 +1,54 @@
-223
-https://www.enterprisedb.com/products/biganimal-cloud-postgresql
-psql "sslmode=disable host=localhost
+create table kafedra(id serial NOT NULL PRIMARY KEY, kafedraNAME varchar NOT NULL UNIQUE, dekanat varchar NOT NULL);
+create table student_group(id serial NOT NULL PRIMARY KEY, groupNAME varchar NOT NULL UNIQUE, kafedraNAME varchar REFERENCES kafedra(kafedraNAME));
+create table students(id serial NOT NULL PRIMARY KEY, passport varchar(10) NOT NULL, full_name varchar NOT NULL, group1 varchar REFERENCES student_group(groupNAME));
 
-create table kafedra(id serial NOT NULL, k_name varchar NOT NULL PRIMARY KEY, dekanat varchar NOT NULL); 
-create table student_group(id serial NOT NULL, k_name varchar PRIMARY KEY REFERENCES kafedra(k_name) , nazvanie varchar NOT NULL UNIQUE); 
-create table students(id serial NOT NULL, passport varchar(10) NOT NULL, s_name varchar NOT NULL, grouppa varchar REFERENCES student_group(nazvanie));
+INSERT INTO kafedra (kafedraNAME, dekanat) values ('СиСС', 'А-347');
+INSERT INTO kafedra (kafedraNAME, dekanat) values ('КиИБ', 'А-403');
+INSERT INTO student_group (groupNAME, kafedraNAME) values ('БИН2301', 'СиСС');
+INSERT INTO student_group (groupNAME, kafedraNAME) values ('БИН2302', 'СиСС');
+INSERT INTO student_group (groupNAME, kafedraNAME) values ('БИН2303', 'СиСС');
+INSERT INTO student_group (groupNAME, kafedraNAME) values ('БИН2304', 'СиСС');
+INSERT INTO student_group (groupNAME, kafedraNAME) values ('БИБ2301', 'КиИБ');
+INSERT INTO student_group (groupNAME, kafedraNAME) values ('БИБ2302', 'КиИБ');
+
+INSERT INTO students (passport, full_name, group1) values ('7719567890', 'Иван Иванович Иванов', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('2619654321', 'Олег Шмелёв Александрович', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('5418896509', 'Никита Заборин Петрович', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('3317282415', 'Боря Морозов Дмитреевич', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('7816432106', 'Андрей Попов Денисович', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('6519849512', 'Елена Васина Анатольевна', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('8019654328', 'Аделина Шамсутдинова Амировна', 'БИН2301');
+INSERT INTO students (passport, full_name, group1) values ('6619880055', 'Данила Милисавлевич Максимович', 'БИН2301');
+
+
+INSERT INTO students (passport, full_name, group1) values ('8019060588', 'Павел Мартинович Евгеньевич', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('7719854438', 'Сергей Морозов Дмитриевич', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('1719212126', 'Юлий Солиев Сергеевич', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('7799182753', 'Александр Сергеевич Пушкин', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('4811843217', 'Михаил Васильевич Ломоносов', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('7128732934', 'Лев Николаевич Толстой', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('8021251219', 'Максим Мартинович Евгеньевич', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('8012052555', 'Иван Мартинович Евгеньевич', 'БИН2302');
+INSERT INTO students (passport, full_name, group1) values ('7234840536', 'Менделеев Дмитрий Иванович', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('5516876548', 'Николай Владимирович Гоголь', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('0819128532', 'Николич Милан Александрович', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('4419906748', 'Михайлова Елена Димитровна', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('2852731769', 'Григорий Явлинский Алексеевич', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('7517777734', 'Владиимир Жириновский Воольфович', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('3419867906', 'Валентин Смирнов Андреевич', 'БИН2303');
+INSERT INTO students (passport, full_name, group1) values ('5643876691', 'Юрий Гагарин Алексеевич', 'БИН2304');
+INSERT INTO students (passport, full_name, group1) values ('1018842842', 'Лев Ландау Давидович', 'БИН2304');
+INSERT INTO students (passport, full_name, group1) values ('4219628357', 'Николай Лузин Николаевич', 'БИН2304');
+INSERT INTO students (passport, full_name, group1) values ('5817349166', 'Владимир Ульянов Ильич', 'БИН2304');
+INSERT INTO students (passport, full_name, group1) values ('3719375875', 'Владимир Марковников Андреевич', 'БИБ2301');
+INSERT INTO students (passport, full_name, group1) values ('0619863297', 'Альбина Ахметшина Александровна', 'БИБ2301');
+INSERT INTO students (passport, full_name, group1) values ('7019842356', 'Станислав Кавальчук Владимирович', 'БИБ2301');
+INSERT INTO students (passport, full_name, group1) values ('3119762189', 'Надежда Захарова Алексеевна', 'БИБ2301');
+INSERT INTO students (passport, full_name, group1) values ('8719832768', 'Степан Григорьев Федорович', 'БИБ2301');
+INSERT INTO students (passport, full_name, group1) values ('0119876453', 'Никита Козлов Сергеевич', 'БИБ2301');
+INSERT INTO students (passport, full_name, group1) values ('5019864571', 'Анна Павлова Викторовна', 'БИБ2302');
+INSERT INTO students (passport, full_name, group1) values ('5519875548', 'Михаил Шевцов Ярославович', 'БИБ2302');
+INSERT INTO students (passport, full_name, group1) values ('5619999732', 'Евгений Розанов Глебович', 'БИБ2302');
+INSERT INTO students (passport, full_name, group1) values ('5719453335', 'Александр Блок Григорьевич', 'БИБ2302');
+INSERT INTO students (passport, full_name, group1) values ('5819815555', 'Андрей Сахаров Дмитриевич', 'БИБ2302');
+INSERT INTO students (passport, full_name, group1) values ('2915377945', 'Владимир Высоцкий Семёнович', 'БИБ2302');
