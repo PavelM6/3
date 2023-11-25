@@ -1,2 +1,0 @@
-sudo apt-get --purge remove postgresql\*
-https://docs.rkeeper.ru/rk7/latest/ru/ustanovka-postgresql-na-windows-29421153.html
